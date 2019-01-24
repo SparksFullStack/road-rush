@@ -12,6 +12,8 @@ class Road extends Phaser.GameObjects.Container {
 
         this.lineGroup = this.scene.add.group();
         this.count = 0; // this is the count for the number of lines that have passed by.
+
+        this.car = this.scene.add.sprite(188, game.config.height * .9, "cars");
     }
 
     makeLines(){
