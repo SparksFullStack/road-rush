@@ -20,6 +20,7 @@ class SceneMain extends Phaser.Scene {
         this.road = new Road({ scene: this });
         Align.centerH(this.road);
         this.road.makeLines();
+        console.log(model.score);
     }
     update() {
         // constantly runnning loop
