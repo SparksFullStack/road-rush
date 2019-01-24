@@ -27,7 +27,7 @@ class Road extends Phaser.GameObjects.Container {
         /* ** */
 
         /* ADDING THE OBSTACLES */
-        this.addObjects();
+        this.addObject();
         /* ** */
     }
 
@@ -55,10 +55,14 @@ class Road extends Phaser.GameObjects.Container {
         else this.car.x = this.displayWidth / 4;
     }
 
-    addObjects(spriteKey){
-        this.object = this.scene.add.sprite(-this.displayWidth / 4, 0, "pcar1");
-        
-        /* Making the spawn random */
+    addObject(){
+        /* Randoming spawning one of the obstacles */
+        const spriteKeys = ['pcar1', 'pcar2', 'cone', 'barrier'];
+        let index = Math.floor(Math.random() * 4);
+        this.object = this.scene.add.sprite(-this.displayWidth / 4, 0, spriteKeys[index]);
+        /* ** */
+
+        /* Making the spawn lane random */
         let lane = Math.random() * 100;
         if (lane < 50) this.object.x = this.displayWidth / 4;
         else this.object.x = -this.displayWidth / 4;
@@ -72,7 +76,7 @@ class Road extends Phaser.GameObjects.Container {
         this.object.y += this.vSpace / 20;
         if (this.object.y > game.config.height){
             this.object.destroy();
-            this.addObjects();
+            this.addObject();
         }
     }
 }
