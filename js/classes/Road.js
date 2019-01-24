@@ -13,7 +13,9 @@ class Road extends Phaser.GameObjects.Container {
         this.lineGroup = this.scene.add.group();
         this.count = 0; // this is the count for the number of lines that have passed by.
 
-        this.car = this.scene.add.sprite(188, game.config.height * .9, "cars");
+        this.car = this.scene.add.sprite(this.displayWidth / 4, game.config.height * .9, "cars");
+        Align.scaleToGameWidth(this.car, .1);
+        this.add(this.car);
     }
 
     makeLines(){
@@ -28,6 +30,7 @@ class Road extends Phaser.GameObjects.Container {
     moveLines(){
         this.lineGroup.children.iterate((child) => child.y += this.vSpace / 20);
         this.count++;
+
         if (this.count === 20){
             this.count = 0;
             this.lineGroup.children.iterate((child) => child.y = child.originalY);
