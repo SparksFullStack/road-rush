@@ -6,7 +6,7 @@ class SceneMain extends Phaser.Scene {
     {
         // preload all assets
         this.load.image("barrier", "images/barrier.png");
-        this.load.image("cars", "images/cars.png");
+        this.load.spritesheet("cars", "images/cars.png", {frameWidth: 60, frameHeight: 126});
         this.load.image("cone", "images/cone.png");
         this.load.image("line", "images/line.png");
         this.load.image("pcar1", "images/pcar1.png");
@@ -17,7 +17,8 @@ class SceneMain extends Phaser.Scene {
     }
     create() {
         // defines all objects for the scene        
-        this.car1 = this.add.image(100, 150, "pcar1");
+        this.road = new Road({ scene: this });
+        this.road.x = game.config.width / 2;
     }
     update() {
         // constantly runnning loop
