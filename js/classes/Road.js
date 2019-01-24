@@ -57,10 +57,11 @@ class Road extends Phaser.GameObjects.Container {
 
     addObject(){
         /* Randoming spawning one of the obstacles */
-        const spriteKeys = [{key: 'pcar1', speed: 10}, {key: 'pcar2', speed: 10}, {key: 'cone', speed: 20}, {key: 'barrier', speed: 20}];
+        const spriteKeys = [{key: 'pcar1', speed: 10, scale: 10}, {key: 'pcar2', speed: 10, scale: 10}, {key: 'cone', speed: 20, scale: 5}, {key: 'barrier', speed: 20, scale: 8}];
         let index = Math.floor(Math.random() * 4);
         this.object = this.scene.add.sprite(-this.displayWidth / 4, 0, spriteKeys[index].key);
         this.object.speed = spriteKeys[index].speed;
+        let scale = spriteKeys[index].scale / 100;
         /* ** */
 
         /* Making the spawn lane random */
@@ -69,7 +70,7 @@ class Road extends Phaser.GameObjects.Container {
         else this.object.x = -this.displayWidth / 4;
         /* ** */
 
-        Align.scaleToGameWidth(this.object, .1);
+        Align.scaleToGameWidth(this.object, scale);
         this.add(this.object);
     }
 
