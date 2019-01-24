@@ -11,13 +11,24 @@ class Road extends Phaser.GameObjects.Container {
         this.setSize(this.back.displayWidth, game.config.height);
 
         this.lineGroup = this.scene.add.group();
+        this.count = 0; // this is the count for the number of lines that have passed by.
     }
 
     makeLines(){
         this.vSpace = this.displayHeight / 10;
-        for (var i = 0; i < 100; i++){
+        for (var i = 0; i < 20; i++){
             var line = this.scene.add.image(this.x, this.vSpace * i, "line");
+            line.originalY = line.y;
             this.lineGroup.add(line);
+        }
+    }
+
+    moveLines(){
+        this.lineGroup.children.iterate((child) => child.y += this.vSpace / 20);
+        this.count++;
+        if (this.count === 20){
+            this.count = 0;
+            this.lineGroup.children.iterate((child) => child.y = child.originalY);
         }
     }
 }
