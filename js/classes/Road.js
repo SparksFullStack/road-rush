@@ -57,6 +57,13 @@ class Road extends Phaser.GameObjects.Container {
 
     addObjects(spriteKey){
         this.object = this.scene.add.sprite(-this.displayWidth / 4, 0, "pcar1");
+        
+        /* Making the spawn random */
+        let lane = Math.random() * 100;
+        if (lane < 50) this.object.x = this.displayWidth / 4;
+        else this.object.x = -this.displayWidth / 4;
+        /* ** */
+
         Align.scaleToGameWidth(this.object, .1);
         this.add(this.object);
     }
