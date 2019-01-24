@@ -24,6 +24,7 @@ class SceneMain extends Phaser.Scene {
     update() {
         // constantly runnning loop
         this.road.moveLines();
+        this.road.moveObject();
     }
 
     // *NOTE: you can add custom functions, as well
