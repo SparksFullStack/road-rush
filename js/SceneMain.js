@@ -18,7 +18,7 @@ class SceneMain extends Phaser.Scene {
     create() {
         // defines all objects for the scene        
         this.road = new Road({ scene: this });
-        this.road.x = game.config.width / 2;
+
     }
     update() {
         // constantly runnning loop
