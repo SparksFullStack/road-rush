@@ -76,6 +76,12 @@ class Road extends Phaser.GameObjects.Container {
 
     moveObject(){
         this.object.y += this.vSpace / this.object.speed;
+
+        /* Adding in collision checking */
+        if (Collision.checkColide(this.car, this.object) === true) this.car.alpha = .5;
+        else this.car.alpha = 1;
+        /* ** */
+        
         if (this.object.y > game.config.height){
             this.object.destroy();
             this.addObject();
