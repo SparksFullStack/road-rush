@@ -1,4 +1,4 @@
-class Road extends Phaser.GameObjects.Container{
+class Road extends Phaser.GameObjects.Container {
     constructor(config){
         super(config.scene);
         this.scene = config.scene;
@@ -6,8 +6,18 @@ class Road extends Phaser.GameObjects.Container{
         this.add(this.back);
         this.scene.add.existing(this);
 
-        Align.center(this.back);
+        Align.scaleToGameWidth(this.back, .5);        
 
         this.setSize(this.back.displayWidth, game.config.height);
+
+        this.lineGroup = this.scene.add.group();
+    }
+
+    makeLines(){
+        this.vSpace = this.displayHeight / 10;
+        for (var i = 0; i < 100; i++){
+            var line = this.scene.add.image(this.x, this.vSpace * i, "line");
+            this.lineGroup.add(line);
+        }
     }
 }

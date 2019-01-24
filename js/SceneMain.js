@@ -13,12 +13,13 @@ class SceneMain extends Phaser.Scene {
         this.load.image("pcar2", "images/pcar2.png");
         this.load.image("road", "images/road.jpg");
         this.load.image("title", "images/title.png");
-        this.load.image("titleBlack", "images/titleBlack.png");
+        this.load.image("titleBack", "images/titleBack.jpg");
     }
     create() {
         // defines all objects for the scene        
         this.road = new Road({ scene: this });
-
+        Align.center(this.road);
+        this.road.makeLines();
     }
     update() {
         // constantly runnning loop
