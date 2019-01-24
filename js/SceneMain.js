@@ -18,7 +18,7 @@ class SceneMain extends Phaser.Scene {
     create() {
         // defines all objects for the scene        
         this.road = new Road({ scene: this });
-        Align.center(this.road);
+        Align.centerH(this.road);
         this.road.makeLines();
     }
     update() {
